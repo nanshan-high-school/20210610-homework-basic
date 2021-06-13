@@ -55,6 +55,4 @@ int main() {
     for (int i = 0; i < l.size(); i++) {
         cout << l[i];
     }
-
-
 }
