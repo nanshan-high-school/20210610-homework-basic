@@ -27,6 +27,6 @@ int main() {
             }
             continue;
         }
-    	cout << type_in[i];
+        cout << type_in[i];
     }
 }
