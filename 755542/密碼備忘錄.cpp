@@ -22,7 +22,6 @@ int main() {
     }
     for (int i = 0; i < In.size(); i++) {
         for (int j = 0; j < In.size(); j++) {
-            
             if (In_count[j] > max) {  //找次數最多的
                 max = In_count[j];
                 max_num = j;
