@@ -3,45 +3,58 @@ using namespace std;
 
 int main() {
     int width, height;
-    cin >> width >> height;
-    int arr[width][height];
+    cin >> height >> width;
+    int arr[width+2][height+2];
     for (int j = 1; j < height+1; j++) {
         for (int i = 1; i < width+1; i++) {
             cin >> arr[i][j];
         }
     }
     //邊緣歸零(skip)
-    //打分數
-    int amounts = 4, temp = 0;
+    //阿要複製表格
+    int copy[width+2][height+2];
     for (int j = 1; j < height+1; j++) {
         for (int i = 1; i < width+1; i++) {
-            if (arr[i][j] == 0) {
-                if (arr[i][j-1] == 0 || arr[i][j-1] > 1000) {
+            copy[i][j] = arr[i][j];
+        }
+    }
+    //打分數
+    int amounts = 4, sum = 0;
+    float result;
+    int resultTwo;
+    for (int j = 1; j < height+1; j++) {
+        for (int i = 1; i < width+1; i++) {
+            amounts = 4;
+            sum = 0;
+            if (copy[i][j] == 0) {
+                if (copy[i][j-1] == 0 || copy[i][j-1] > 1000 || copy[i][j-1] < 0) {
                     amounts -= 1;
                 } else {
-                    temp += arr[i][j-1];
+                    sum += copy[i][j-1];
                 }
-                if (arr[i][j+1] == 0 || arr[i][j+1] > 1000) {
+                if (copy[i][j+1] == 0 || copy[i][j+1] > 1000 || copy[i][j+1] < 0) {
                     amounts -= 1;
                 } else {
-                    temp += arr[i][j+1];
+                    sum += copy[i][j+1];
                 }
-                if (arr[i-1][j] == 0 || arr[i-1][j] > 1000) {
+                if (copy[i-1][j] == 0 || copy[i-1][j] > 1000 || copy[i-1][j] < 0) {
                     amounts -= 1;
                 } else {
-                    temp += arr[i-1][j];
+                    sum += copy[i-1][j];
                 }
-                if (arr[i+1][j] == 0 || arr[i+1][j] > 1000) {
+                if (copy[i+1][j] == 0 || copy[i+1][j] > 1000 || copy[i+1][j] < 0) {
                     amounts -= 1;
                 } else {
-                    temp += arr[i+1][j];
+                    sum += copy[i+1][j];
                 }
-                temp /= amounts;
-                arr[i][j] = temp;
+                result = sum / amounts;
+                resultTwo = result;
+                arr[i][j] = resultTwo;
             }
         }
     }
     //Output
+    cout << "-----" << endl;
     for (int j = 1; j < height+1; j++) {
         for (int i = 1; i < width+1; i++) {
             cout << arr[i][j] << " ";
