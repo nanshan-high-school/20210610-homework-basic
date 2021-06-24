@@ -40,9 +40,11 @@ int main() {
                 }
             }
         }
+        
         if (max == 0) {
             break;
         }
+
         finalPass.push_back(Pass[maxPlace]);
         pTimes[maxPlace] = -1;
         max = 0;

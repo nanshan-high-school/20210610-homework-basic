@@ -55,9 +55,11 @@ int main() {
 
                 upNum = 0;
                 downNum = 0;
-                continue; 
+                continue;
+            } else {
+                pop[i - 1][j - 1] = popBig[i][j];
+                continue;
             }
-            pop[i - 1][j - 1] = popBig[i][j];
         }
     }
 
